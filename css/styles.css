@@ -73,6 +73,13 @@ img {
     padding-bottom: var(--section-padding);
 }
 
+/* -------Анимация при hover & focus------- */
+.animations {
+    transition-property: color, fill, background-color, border-color, box-shadow;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* -------Шапка------- */
 
 .header {
@@ -116,7 +123,21 @@ img {
     margin-right: 50px;
 }
 
+.active-page::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+
+    background-color: var(--accent-link-color);
+    border-radius: 2px;
+}
+
 .header-link {
+    position: relative;
+
     display: inline-flex;
     align-items: center;
     padding-top: 32px;
@@ -129,7 +150,7 @@ img {
     color: var(--secondary-text-color);
 }
 
-.header-link.active-page {
+.active-page {
     color: var(--accent-link-color);
 }
 
@@ -309,6 +330,8 @@ img {
 }
 
 .works-item {
+    position: relative;
+
     width: 370px;
     margin-left: 0;
     margin-right: 0;
@@ -316,6 +339,31 @@ img {
 
 .works-item:not(:last-child) {
     margin-right: 30px;
+}
+
+.works-label {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 70px;
+    bottom: 0;
+
+    background-color: rgba(47, 48, 58, 0.8);
+}
+
+.works-label-title {
+    margin: 0;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #ffffff;
 }
 
 /* -------Наша команда------- */
@@ -358,6 +406,8 @@ img {
 
 .team-item-content {
     text-align: center;
+    padding-left: 32px;
+    padding-right: 32px;
     margin-bottom: 30px;
 }
 
@@ -383,7 +433,6 @@ img {
 
 .team-socials-list {
     display: flex;
-    width: 206px;
 }
 
 .team-socials-item {
@@ -421,7 +470,7 @@ img {
 
 .team-socials-link:hover .team-icon,
 .team-socials-link:hover .team-icon {
-    fill: currentColor;
+    fill: var(--secondary-icon-color);
 }
 
 /* -------Постоянные клиенты------- */
